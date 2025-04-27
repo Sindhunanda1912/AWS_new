@@ -4,8 +4,8 @@ phases:
   install:
     commands:
       - echo "Installing Nginx server"
-      - sudo yum update -y 
-      - sudo yum install -y nginx
+      - sudo dnf update -y 
+      - sudo dnf install -y nginx
   build:
     commands:
       - echo "Build phase started"
