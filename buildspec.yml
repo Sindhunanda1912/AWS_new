@@ -3,16 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing Nginx"
-      - sudo yum update -y
+      - echo "Installing Nginx server"
+      - sudo yum update -y --skip-broken  
       - sudo yum install -y nginx
   build:
     commands:
-      - echo "Build start"
-      - sudo cp index.html /usr/share/nginx/html
+      - echo "Build phase started"
+      - sudo cp index.html /usr/share/nginx/html/   
   post_build:
     commands:
-      - echo "Configuring Nginx server"
+      - echo "Starting and enabling Nginx service"
       - sudo systemctl start nginx
       - sudo systemctl enable nginx
 
