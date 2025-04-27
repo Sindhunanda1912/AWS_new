@@ -3,18 +3,20 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing Nginx server"
-      - sudo dnf update -y 
-      - sudo dnf install -y nginx
+      - echo "Setting up Docker"
+      - sudo yum install -y docker  
+      - sudo systemctl start docker
+      - sudo systemctl enable docker
+      - echo "Running Nginx container"
+      - sudo docker run -d -p 80:80 --name nginx-container nginx
   build:
     commands:
       - echo "Build phase started"
       - sudo cp index.html /usr/share/nginx/html/
   post_build:
     commands:
-      - echo "Starting and enabling Nginx service"
-      - sudo systemctl start nginx
-      - sudo systemctl enable nginx
+      - echo "Container started with Nginx"
+      - sudo docker ps
 
 artifacts:
   files:
