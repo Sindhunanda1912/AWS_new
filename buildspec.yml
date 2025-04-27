@@ -4,12 +4,12 @@ phases:
   install:
     commands:
       - echo "Installing Nginx server"
-      - sudo yum update -y --skip-broken  
-      - sudo yum install -y nginx
+      - sudo dnf update -y   # dnf instead of yum
+      - sudo dnf install -y nginx
   build:
     commands:
       - echo "Build phase started"
-      - sudo cp index.html /usr/share/nginx/html/   
+      - sudo cp index.html /usr/share/nginx/html/
   post_build:
     commands:
       - echo "Starting and enabling Nginx service"
